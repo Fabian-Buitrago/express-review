@@ -2,20 +2,28 @@ const express = require('express')
 
 const app = express()
 
-app.get('/', (req, res) => {
-    res.send('Hello world')
+app.get('/products', (req, res) => {
+    // Validate data
+    // Query a database
+    // Process data
+    
+    res.send('product list')
 })
 
-app.get('/about', (req, res) => {
-    res.send('About')
+app.post('/products', (req, res) => {
+    res.send('creating products')
 })
 
-app.get('/weather', (req, res) => {
-    res.send('The weather is nice')
+app.put('/products', (req, res) => {
+    res.send('updating products')
 })
 
-app.use((req, res) => {
-    res.status(404).send('Page not found')
+app.delete('/products', (req, res) => {
+    res.send('deleting products')
+})
+
+app.patch('/products', (req, res) => {
+    res.send('update a part of the product')
 })
 
 app.listen(3000)
