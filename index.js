@@ -1,10 +1,12 @@
-import http from 'http'
-import fs from 'fs'
+const express = require('express')
 
-const server = http.createServer((req, res) => {
-    const read = fs.createReadStream('./static/index.html')
-    read.pipe(res)
+const app = express()
+
+app.get('/', (req, res) => {
+    res.sendFile('/static/index.html', {
+        root: __dirname
+    })
 })
 
-server.listen(3000)
-console.log('Server on port ${3000}')
+app.listen(3000)
+console.log('Server on por ${3000}')
