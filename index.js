@@ -40,5 +40,15 @@ app.get("/search", (req, res) => {
   res.send(`Regular page`);
 });
 
+//method all -> this allows any verb to be used in a request (post, get, put, delete patch)
+app.all("/search", (req, res) => {
+  console.log(req.query);
+  const { book } = req.query;
+  if(book === 'javascript book') {
+    res.send('javascript book list')
+  }
+  res.send(`Regular page`);
+});
+
 app.listen(3000);
 console.log("Server on por ${3000}");
