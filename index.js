@@ -1,25 +1,16 @@
 const express = require("express");
+const morgan = require("morgan");
 
 const app = express();
 
-//Logger middleware
-app.use((req, res, next) => {
-  //here logger logic
+// Morgan middleware for displaying console messages only 
+// There is middleware for:
+// Upload images
+// Check if it has any value in a cookie
+// Validate data
+// Etc
 
-  console.log(`entered by Logger Middleware, Route: ${req.url} Method: ${req.method}`);
-  next();
-});
-
-//IsAuthenticated middleware
-app.use((req, res, next) => {
-  //here isAuthenticated logic
-  const { login } = req.query;
-  if (login === "test@test.com") {
-    next();
-  } else {
-    res.send("Not authorized");
-  }
-});
+app.use(morgan('dev'))
 
 app.get("/profile", (req, res) => {
   res.send(`Profile page`);
