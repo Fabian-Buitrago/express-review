@@ -30,5 +30,15 @@ app.get("/name/:name/age/:age", (req, res) => {
   res.send(`The user ${name} is ${age} years old`);
 });
 
+//queries
+app.get("/search", (req, res) => {
+  console.log(req.query);
+  const { book } = req.query;
+  if(book === 'javascript book') {
+    res.send('javascript book list')
+  }
+  res.send(`Regular page`);
+});
+
 app.listen(3000);
 console.log("Server on por ${3000}");
