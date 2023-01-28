@@ -2,6 +2,9 @@ const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 
+const HomeRoutes = require("./routes/home");
+const UserRoutes = require("./routes/user");
+
 const app = express();
 
 // Morgan middleware for displaying console messages only
@@ -11,11 +14,18 @@ const app = express();
 // Validate data
 // Etc
 
+// Settings
+app.set("case sensitive routing", true);
+app.set("appName", "Express review");
+app.set("port", 4000);
+
+// Middlewares
+app.use(express.json());
 app.use(morgan("dev"));
 
-app.get("/profile", (req, res) => {
-  res.send(`Profile page`);
-});
+// Routes
+app.use(HomeRoutes);
+app.use(UserRoutes);
 
 // Use in the last part of the document to not interfere with the routes
 // app.use(express.static("./public"));
@@ -28,5 +38,5 @@ app.get("/profile", (req, res) => {
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-app.listen(3000);
-console.log(`Server on port ${3000}`);
+app.listen(app.get("port"));
+console.log(`Server ${app.get("appName")} on port ${app.get("port")}`);
