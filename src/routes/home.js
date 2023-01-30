@@ -4,7 +4,8 @@ const router = Router();
 
 router.get("/", (req, res) => {
   const title = "Index";
-  res.render("index", { title });
+  const isActive = true;
+  res.render("index", { title, isActive });
 });
 
 router.get("/dashboard", (req, res) => {

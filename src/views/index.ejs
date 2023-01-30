@@ -1,3 +1,12 @@
 <%- include('partials/header'); %>
 <h1><%= title %></h1>
+
+<% if (isActive) { %>
+  <p>Server is up</p>
+<% } else { %>
+  <p>Server is down</p>
+<% } %>
+
+<%= new Date(); %>
+
 <%- include('partials/footer'); %>
