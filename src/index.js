@@ -19,6 +19,10 @@ app.set("case sensitive routing", true);
 app.set("appName", "Express review");
 app.set("port", 4000);
 
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+app.set("views", path.join(__dirname, "views"));
+
 // Middlewares
 app.use(express.json());
 app.use(morgan("dev"));

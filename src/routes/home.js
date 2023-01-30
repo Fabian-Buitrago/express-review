@@ -7,7 +7,8 @@ router.get("/dashboard", (req, res) => {
 });
 
 router.get("/about", (req, res) => {
-  res.send(`about page`);
+  const title = "My page created from express";
+  res.render("index", { title });
 });
 
 module.exports = router;
